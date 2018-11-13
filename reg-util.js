@@ -69,18 +69,25 @@ function getRoles(logger) {
 
 function validateRole(logger, role, task) {
     return function(username, name, roles, callback) {
-        if (roles.includes(role)) {
+        if (role == null) {
             logger.log({
-                level:'verbose',
+                level: 'verbose',
                 function: 'validateRole',
-                message:`User ${username} has permission for ${task}`
+                message: 'Ignoring validation step and returning results'
             })
             callback(null, username, name, roles)
+        } else if (roles.includes(role)) {
+            logger.log({
+                level: 'verbose',
+                function: 'validateRole',
+                message: `User ${username} has permission for ${task}`
+            })
+            callback(null, username, name, roles)  
         } else {
             logger.log({
-                level:'error',
+                level: 'error',
                 function: 'validateRole',
-                message:`User ${username} does not have permission for ${task}`
+                message: `User ${username} does not have permission for ${task}`
             })
             callback(`User ${username} does not have permission for ${task}`, null)
         }

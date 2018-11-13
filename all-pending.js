@@ -41,6 +41,7 @@ function getAllPending(req, res, connection, logger) {
                     message: `RethinkDB encountered an error`,
                     error: err
                 })
+                callback('RethinkDB encountered an error', err)
             } else {
                 data = cursor.toArray(function(err, result) {
                     if (err) {
@@ -49,6 +50,7 @@ function getAllPending(req, res, connection, logger) {
                             function: 'getAllPendingUsers',
                             message: `error ocurred retrieving pending users: ${err}`
                         })
+                        callback('error ocurred retrieving pending users', err)
                     } else {
                         logger.log({
                             level: 'verbose',
