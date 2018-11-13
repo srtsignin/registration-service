@@ -87,8 +87,14 @@ function validateRole(logger, role, task) {
     }
 }
 
+function getTimeString() {
+    date = new Date()
+    return date.toISOString()
+}
+
 module.exports = {
     resultResponse: resultResponse,
     getRoles: getRoles,
-    validateRole: validateRole
+    validateRole: validateRole,
+    getTimeString: getTimeString
 }

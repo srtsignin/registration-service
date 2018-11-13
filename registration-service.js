@@ -9,6 +9,7 @@ const config = require('./config/registration-config.json')
 const jsonParser = bodyParser.json()
 
 const allPending = require('./all-pending.js')
+const registration = require('./registration.js')
 
 app.get('/allPending', (req, res) => {
     allPending.getAllPending(req, res, app._rdbConn, app.logger)
@@ -18,7 +19,7 @@ app.get('/count', (req, res) => {
 
 })
 
-app.post('/membershipDecision', (req, res) => {
+app.post('/membershipDecision', jsonParser, (req, res) => {
 
 })
 
@@ -26,8 +27,8 @@ app.delete('/membershipDecision', (req, res) => {
 
 })
 
-app.post('/registration', (req, res) => {
-
+app.post('/registration', jsonParser, (req, res) => {
+    registration.registerUser(req, res, app._rdbConn, app.logger)
 })
 
 /*** INITIALIZATION FUNCTIONS ***/
