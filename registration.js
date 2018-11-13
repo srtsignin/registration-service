@@ -71,7 +71,7 @@ function registerUser(req, res, connection, logger) {
                         message: 'An error occured getting the pending users from RethinkDB',
                         error: err
                     })
-                    callback('An error occured getting the pending users from RethinkDB', null)
+                    callback('An error occured getting the pending users from RethinkDB', err)
                 } else {
                     result.toArray(function(err, result) {
                         if (err) {
@@ -81,7 +81,7 @@ function registerUser(req, res, connection, logger) {
                                 message: 'Could not convert RethinkDB result toArray',
                                 error: err
                             })
-                            callback('Could not convert RethinkDB result toArray', null)
+                            callback('Could not convert RethinkDB result toArray', err)
                         } else {
                             if (result.length != 0) {
                                 logger.log({

@@ -10,6 +10,7 @@ const jsonParser = bodyParser.json()
 
 const allPending = require('./all-pending.js')
 const registration = require('./registration.js')
+const membershipDecision = require('./membership-decision.js')
 
 app.get('/allPending', (req, res) => {
     allPending.getAllPending(req, res, app._rdbConn, app.logger)
@@ -23,11 +24,11 @@ app.post('/membershipDecision', jsonParser, (req, res) => {
 
 })
 
-app.delete('/membershipDecision', (req, res) => {
-
+app.delete('/membershipDecision', jsonParser, (req, res) => {
+    membershipDecision.declineMember(req, res, app._rdbConn, app.logger)
 })
 
-app.post('/registration', jsonParser, (req, res) => {
+app.post('/registration', (req, res) => {
     registration.registerUser(req, res, app._rdbConn, app.logger)
 })
 
