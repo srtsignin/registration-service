@@ -11,13 +11,14 @@ const jsonParser = bodyParser.json()
 const allPending = require('./all-pending.js')
 const registration = require('./registration.js')
 const membershipDecision = require('./membership-decision.js')
+const count = require('./count.js')
 
 app.get('/allPending', (req, res) => {
     allPending.getAllPending(req, res, app._rdbConn, app.logger)
 })
 
 app.get('/count', (req, res) => {
-
+    count.pendingCount(req, res, app._rdbConn, app.logger)
 })
 
 app.post('/membershipDecision', jsonParser, (req, res) => {

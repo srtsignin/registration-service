@@ -43,7 +43,7 @@ function getAllPending(req, res, connection, logger) {
                 })
                 callback('RethinkDB encountered an error', err)
             } else {
-                data = cursor.toArray(function(err, result) {
+                cursor.toArray(function(err, result) {
                     if (err) {
                         logger.log({
                             level: 'error',
