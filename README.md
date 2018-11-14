@@ -11,3 +11,79 @@ r.db('srtsignin').table('pending').indexCreate('timestamp')
 ```
 
 ## Endpoints
+
+### POST /register/registration
+
+**Header**
+```js
+AuthToken: authToken
+```
+
+**Response**
+```js
+{
+    'message': 'Successfully added user to pending',
+    'success': true,
+    'data': {
+        'timestamp': '2018-11-13T21:39:40.849Z',
+        'username': 'username',
+        'name': 'fullname'
+    }
+}
+```
+
+### GET /register/allPending
+
+**Header**
+```js
+AuthToken: authToken
+```
+
+**Response**
+```js
+{
+    'message': 'Receiving courses containing the following query string: queryString',
+    'success': true,
+    'data': [
+        {
+            'timestamp': '2018-11-13T21:39:40.849Z',
+            'username': 'username',
+            'name': 'fullname'
+        }
+    ]
+}
+```
+
+### GET /register/count
+
+**Header**
+```js
+'AuthToken': 'authToken'
+```
+
+**Response**
+```js
+{
+    'message': 'Current pending count is 1',
+    'success': true,
+    'data': '5 (a number representing the length of the list)'
+}
+```
+
+### POST /register/membershipDecision
+
+**Header**
+```js
+'AuthToken': 'authToken'
+```
+
+**Response**
+```js
+{
+    'message': 'Successfully approved <username> and removed them from pending list',
+    'success': true,
+    'data': null
+}
+```
+
+### DELETE /register/membershipDecision
