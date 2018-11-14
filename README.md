@@ -46,6 +46,7 @@ AuthToken: authToken
     'success': true,
     'data': [
         {
+            'id': 'feabff45-2154-4530-81f2-a67f0e2b7fd3',
             'timestamp': '2018-11-13T21:39:40.849Z',
             'username': 'username',
             'name': 'fullname'
@@ -77,6 +78,14 @@ AuthToken: authToken
 'AuthToken': 'authToken'
 ```
 
+**Body**
+```js
+{
+    'username': 'username',
+    'roles': ['Student', 'Tutor']
+}
+```
+
 **Response**
 ```js
 {
@@ -87,3 +96,24 @@ AuthToken: authToken
 ```
 
 ### DELETE /register/membershipDecision
+
+**Header**
+```js
+'AuthToken': 'authToken'
+```
+
+**Body**
+```js
+{
+    'username': 'username'
+}
+```
+
+**Response**
+```js
+{
+    'message': `Successfully removed <username> from pending list`,
+    'success': true,
+    'data': null
+}
+```
