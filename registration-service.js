@@ -22,7 +22,7 @@ app.get('/count', (req, res) => {
 })
 
 app.post('/membershipDecision', jsonParser, (req, res) => {
-
+    membershipDecision.approveMember(req, res, app._rdbConn, app.logger)
 })
 
 app.delete('/membershipDecision', jsonParser, (req, res) => {
