@@ -9,3 +9,5 @@ Remember to run the following command in rethinkdb to create the required index 
 r = require('rethinkdb');
 r.db('srtsignin').table('pending').indexCreate('timestamp')
 ```
+
+## Endpoints
